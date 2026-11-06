@@ -8,7 +8,8 @@ import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeComponents from 'rehype-components' /* Render the custom directive content */
-import rehypeKatex from 'rehype-katex'
+import katex from 'katex'
+import { rehypeKatexVersioned } from './src/plugins/rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive' /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
@@ -122,7 +123,7 @@ export default defineConfig({
         parseDirectiveNode as any,
       ],
       rehypePlugins: [
-        rehypeKatex,
+        [rehypeKatexVersioned, { version: katex.version }],
         rehypeSlug,
         [
           rehypeComponents,
