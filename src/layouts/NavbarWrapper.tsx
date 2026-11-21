@@ -1,4 +1,3 @@
-import config from '@/config'
 import {
   BANNER_HEIGHT,
   BANNER_HEIGHT_HOME,
@@ -67,16 +66,15 @@ export default (props: Props) => {
   return (
     <div
       class={clsx(
-        'z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto',
-        config.banner.enable &&
-          'h-[calc(var(--banner-height-home)_-_4.5rem)] duration-300',
+        'fixed inset-x-0 top-0 z-50 pointer-events-none max-w-[var(--page-width)] px-0 md:px-4 mx-auto',
         local.class,
       )}
       {...others}
     >
       <div
+        inert={hidden()}
         class={clsx(
-          'pointer-events-auto sticky top-0 transition-all',
+          'pointer-events-auto transition-all',
           hidden() && 'opacity-0 -translate-y-16',
         )}
       >
